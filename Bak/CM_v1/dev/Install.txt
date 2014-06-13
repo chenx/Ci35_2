@@ -1,0 +1,30 @@
+By: X.C.
+Created On: 5/28/2014
+Last modified: 5/30/2014
+
+
+This is a ASP.NET 3.5 website framework in C#. It contains these functions:
+1) User log in and log out.
+2) Basic user management: both user self-management of personal profile, and admin's central-management of all user profiles.
+
+
+
+To Install:
+
+1) setup database.
+   Do as App_Data\README.txt instructs.
+2) setup web server file
+   - Copy the CM source file folder to destination folder.
+   - Use Internet Information Services (IIS) Manager, make this folder a application.
+   - Visit from browser.
+3) Log into the system as admin/password. 
+   Change default password for account "admin" and "user".
+   Add new users throught the web UI.
+   Add new clients throught the web UI.
+
+
+Admin doc:
+
+- User management
+  - A disabled user cannot log in.
+  - A deleted user is deleted permanently from the system.
