@@ -32,14 +32,14 @@
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
         
         <p><br /></p>
+        
         <asp:Panel ID="panel_footer" runat="server" Width="100%" BackColor="#eeeeee">
             <!--[if IE]>
-            <div style="text-align: center; position:absolute; width:100%; height:50px;  bottom:0px; padding:0px; color:#999999; font-size:14px;">
+            <div style="text-align: center; position:absolute; width:100%; height:50px;  bottom:0px; padding:0px; color:#999999; font-size:14px; background-color:white;">
             <![endif]-->
         
             <!--[if ! IE]>--> 
-            <div style="text-align: center; position:fixed; width:100%; height:50px;  bottom:0px; padding:0px; color:#999999; font-size:14px;">
-            <!--<![endif]-->
+            <div style="text-align: center; position:fixed; width:100%; height:50px;  bottom:0px; padding:0px; color:#999999; font-size:14px; background-color:white;">
             <hr style="color: #eeeeee; width:100%;" noshade size="1" />
             <a href="#">About Us</a> &nbsp;&nbsp;&nbsp;&nbsp;
             <a href="#">Terms of Service</a> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -47,6 +47,7 @@
             <a href="#">Security</a> 
             &nbsp;&nbsp;&nbsp;&nbsp; 
             Copyright &copy; 2014
+            <!--<![endif]-->
             </div>
         </asp:Panel>
                 
