@@ -54,7 +54,7 @@ LEFT OUTER JOIN Attorney A ON C.Attorney = A.ID
 LEFT OUTER JOIN Paralegal P ON C.Paralegal = P.ID";
 
         string initial = ClsUtil.getStrVal(Request["ini"]);
-        strQuery += " AND Last_Name like '" + initial + "%'";
+        strQuery += " AND Last_Name like " + ClsDB.sqlEncode(initial + "%");
         strQuery += " ORDER BY C.ID ASC";
 
         string s = "";

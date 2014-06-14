@@ -32,12 +32,12 @@ public class Registry : IHttpHandler, System.Web.SessionState.IReadOnlySessionSt
             else if (action == "2") { // remove/hide
                 strQuery = "UPDATE Client SET disabled = '1', last_update_user_id = " +
                     ClsDB.sqlEncode( context.Session["userid"].ToString() ) + ", last_update_datetime = " + 
-                    ClsDB.sqlEncode( DateTime.Now.ToString() ) + " WHERE ID = " + ClientID;
+                    ClsDB.sqlEncode( DateTime.Now.ToString() ) + " WHERE ID = " + ClsDB.sqlEncode(ClientID);
             }
             else if (action == "3") { // show
                 strQuery = "UPDATE Client SET disabled = '0', last_update_user_id = " +
                     ClsDB.sqlEncode(context.Session["userid"].ToString()) + ", last_update_datetime = " +
-                    ClsDB.sqlEncode(DateTime.Now.ToString()) + " WHERE ID = " + ClientID;
+                    ClsDB.sqlEncode(DateTime.Now.ToString()) + " WHERE ID = " + ClsDB.sqlEncode(ClientID);
             }
             else {
                 writeResponse(context, "0");

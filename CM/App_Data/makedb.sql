@@ -184,7 +184,7 @@ GO
 
 PRINT 'Creat view V_Client ...'
 IF EXISTS(select * FROM sys.views where name = '')
-	DROP VIEW [V_Client]
+    DROP VIEW [V_Client]
 Go
 CREATE VIEW [dbo].[V_Client]
 AS

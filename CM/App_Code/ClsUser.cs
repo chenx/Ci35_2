@@ -1,14 +1,6 @@
 ﻿using System;
 using System.Data;
-using System.Configuration;
-using System.Linq;
 using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
 
 /// <summary>
 /// Summary description for ClsUser
@@ -36,7 +28,7 @@ public class ClsUser
     public string new_pwd2;
 
     public ClsUser()
-	{
+    {
         this.clear();
     }
 
@@ -149,8 +141,33 @@ public class ClsUser
         }
     }
 
+    public string check_error() {
+        string s = "";
+
+        if (this.first_name == "")
+        {
+            s += "First name cannot be empty<br>";
+        }
+        if (this.last_name == "")
+        {
+            s += "Last name cannot be empty<br>";
+        }
+        if (!ClsUtil.IsValidEmail(this.email))
+        {
+            s += "Email is not valid<br>";
+        }
+        if (this.gid == "") {
+            s += "User Type cannot be empty<br>";
+        }
+
+        return s;
+    }
+
     public void update(string ID, string update_user_id) {
         if (ID == "") return;
+
+        string err = check_error();
+        if (err != "") throw new Exception(err); 
 
         string disable = (this.disabled == "") ? "" : "disabled = " + ClsDB.sqlEncode(this.disabled);
 
@@ -161,9 +178,9 @@ public class ClsUser
             "Note = " + ClsDB.sqlEncode( this.note ) + ", " +
             "gid = " + ClsDB.sqlEncode( this.gid ) + ", " +
             "last_update_user_id = " + ClsDB.sqlEncode( update_user_id ) + ", " +
-            "last_update_datetime = " + ClsDB.sqlEncode(DateTime.Now.ToString()) + ", " +
+            "last_update_datetime = " + ClsDB.sqlEncode( DateTime.Now.ToString() ) + ", " +
             disable +
-            " WHERE ID = " + ID;
+            " WHERE ID = " + ClsDB.sqlEncode(ID);
         ;
 
         new ClsDB().ExecuteNonQuery(this._strQuery);

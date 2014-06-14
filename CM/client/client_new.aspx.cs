@@ -50,7 +50,7 @@ public partial class client_new : System.Web.UI.Page
         string s = "";
         string star = "<font color='red'>*</font>";
 
-        s += "<tr><td>Case Id:" + star + "</td><td><input type='text' maxlength='10' id='txtCaseId' name='txtCaseId' value='" + this.client.Case_Id + "'></td></tr>";
+        s += "<tr><td>Case Id:" + star + "</td><td><input type='text' maxlength='10' id='txtCaseId' name='txtCaseId' value='" + this.client.Case_Id + "' onkeypress=\"javascript: return numberOnly(event);\"></td></tr>";
         s += "<tr id='trAttorney'><td>Attorney:</td><td>" + ClsClient.writeAttorneyList("txtAttorney", "txtAttorney", this.client.Attorney) + "</td></tr>";
         s += "<tr><td>Paralegal:</td><td>" + ClsClient.writeParalegalList("txtParalegal", "txtParalegal", this.client.Paralegal) + "</td></tr>";
         s += "<tr><td>Date Of Injury:</td><td><input type='text' class='datetime' maxlength='10' id='txtDateOfInjury' name='txtDateOfInjury' value='" + this.client.Date_Of_Injury + "'></td></tr>";

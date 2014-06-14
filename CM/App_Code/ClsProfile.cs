@@ -1,14 +1,6 @@
 ﻿using System;
 using System.Data;
-using System.Configuration;
-using System.Linq;
 using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
 
 /// <summary>
 /// Summary description for ClsUser
@@ -25,7 +17,7 @@ public class ClsProfile
     public string note;
 
     public ClsProfile()
-	{
+    {
         this.clear();
     }
 
@@ -74,8 +66,30 @@ public class ClsProfile
         }
     }
 
+    public string check_error() {
+        string s = "";
+
+        if (this.first_name == "")
+        {
+            s += "First name cannot be empty<br>";
+        }
+        if (this.last_name == "")
+        {
+            s += "Last name cannot be empty<br>";
+        }
+        if (!ClsUtil.IsValidEmail(this.email))
+        {
+            s += "Email is not valid<br>";
+        }
+
+        return s;
+    }
+
     public void update(string ID, string update_user_id) {
         if (ID == "") return;
+
+        string err = check_error();
+        if (err != "") throw new Exception(err); 
 
         this._strQuery = "UPDATE [User] SET " +
             "First_Name = " + ClsDB.sqlEncode( this.first_name ) + ", " +
@@ -83,8 +97,8 @@ public class ClsProfile
             "Email = " + ClsDB.sqlEncode( this.email ) + ", " +
             "Note = " + ClsDB.sqlEncode( this.note ) + ", " +
             "last_update_user_id = " + ClsDB.sqlEncode( update_user_id ) + ", " +
-            "last_update_datetime = " + ClsDB.sqlEncode(DateTime.Now.ToString()) + 
-            " WHERE ID = " + ID;
+            "last_update_datetime = " + ClsDB.sqlEncode( DateTime.Now.ToString() ) + 
+            " WHERE ID = " + ClsDB.sqlEncode(ID);
         ;
 
         new ClsDB().ExecuteNonQuery(this._strQuery);

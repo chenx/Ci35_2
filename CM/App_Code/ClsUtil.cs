@@ -1,15 +1,8 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Configuration;
-using System.Linq;
-using System.Web;
 using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Xml.Linq;
+
 
 /// <summary>
 /// Summary description for ClsUtil
@@ -138,5 +131,20 @@ public class ClsUtil
     public static string MD5(string s)
     {
         return FormsAuthentication.HashPasswordForStoringInConfigFile(s, "MD5");
+    }
+    
+    public static bool IsValidEmail(string email)
+    {
+        if (email.Trim() == "") return false;
+
+        try
+        {
+            var addr = new System.Net.Mail.MailAddress(email);
+            return addr.Address == email;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }

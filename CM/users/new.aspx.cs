@@ -71,9 +71,48 @@ public partial class user_new : System.Web.UI.Page
             "<br/><input value=\"Add New User\" type=\"button\" onclick=\"javascript:add();\" />";
     }
 
+
+    public string check_error()
+    {
+        string s = "";
+
+        if (this.user.first_name == "")
+        {
+            s += "First name cannot be empty<br>";
+        }
+
+        if (this.user.last_name == "")
+        {
+            s += "Last name cannot be empty<br>";
+        }
+
+        if (!ClsUtil.IsValidEmail(this.user.email))
+        {
+            s += "Email is not valid<br>";
+        }
+
+        if (this.user.login == "")
+        {
+            s += "Login cannot be empty<br>";
+        }
+
+        string t = ClsUser.validate_pwd(ClsUtil.getPostVal(Request["txtPwd"]), ClsUtil.getPostVal(Request["txtPwd2"]));
+        if (t != "")
+        {
+            s += t + "<br>";
+        }
+
+        if (this.user.gid == "")
+        {
+            s += "User Type cannot be empty<br>";
+        }
+
+        return s;
+    }
+
     // Note this is complicated by password, so needs special handling.
     void insert() {
-        string s = ClsUser.validate_pwd(ClsUtil.getPostVal(Request["txtPwd"]), ClsUtil.getPostVal(Request["txtPwd2"]));
+        string s = this.check_error();
         if (s != "") {
             throw new Exception(s);
         }

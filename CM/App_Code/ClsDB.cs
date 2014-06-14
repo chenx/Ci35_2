@@ -56,26 +56,19 @@ public class ClsDB
     /// <param name="strQuery"></param>
     public void ExecuteNonQuery(string strQuery) 
     {
-        if (ClsUtil.DEBUG()) { 
-            // output query string.
-        }
-
-        string strConn = this.strConn();
-        SqlConnection conn = new SqlConnection(strConn);
-        SqlCommand comm = new SqlCommand(strQuery, conn);
-
         try
         {
-            conn.Open();
-            comm.ExecuteNonQuery(); 
+            string strConn = this.strConn();
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                SqlCommand comm = new SqlCommand(strQuery, conn);
+                conn.Open();
+                comm.ExecuteNonQuery();
+            }
         }
         catch (Exception ex)
         {
             throw new Exception(ex.Message);
-        }
-        finally
-        {
-            conn.Close();
         }
     }
 
@@ -87,28 +80,26 @@ public class ClsDB
     public string ExecuteScalar(string strQuery)
     {
         string ret = "";
-        string strConn = this.strConn();
-        SqlConnection conn = new SqlConnection(strConn);
-        SqlCommand comm = new SqlCommand(strQuery, conn);
-        SqlDataReader sdr = null;
 
         try
         {
-            conn.Open();
-            sdr = comm.ExecuteReader();
-            if (sdr.Read())
+            string strConn = this.strConn();
+            using (SqlConnection conn = new SqlConnection(strConn))
             {
-                ret = sdr[0].ToString();
+                SqlCommand comm = new SqlCommand(strQuery, conn);
+                conn.Open();
+                using (SqlDataReader sdr = comm.ExecuteReader())
+                {
+                    if (sdr.Read())
+                    {
+                        ret = sdr[0].ToString();
+                    }
+                }
             }
         }
         catch (Exception ex)
         {
             throw new Exception(ex.Message);
-        }
-        finally
-        {
-            if (sdr != null) sdr.Close();
-            conn.Close();
         }
 
         return ret;
@@ -126,28 +117,26 @@ public class ClsDB
     public byte[] ExecuteVarbinary(string strQuery)
     {
         byte[] ret = null;
-        string strConn = this.strConn();
-        SqlConnection conn = new SqlConnection(strConn);
-        SqlCommand comm = new SqlCommand(strQuery, conn);
-        SqlDataReader sdr = null;
 
         try
         {
-            conn.Open();
-            sdr = comm.ExecuteReader();
-            if (sdr.Read())
+            string strConn = this.strConn();
+            using (SqlConnection conn = new SqlConnection(strConn))
             {
-                ret = (byte[])sdr[0];
+                SqlCommand comm = new SqlCommand(strQuery, conn);
+                conn.Open();
+                using (SqlDataReader sdr = comm.ExecuteReader())
+                {
+                    if (sdr.Read())
+                    {
+                        ret = (byte[])sdr[0];
+                    }
+                }
             }
         }
         catch (Exception ex)
         {
             throw new Exception(ex.Message);
-        }
-        finally
-        {
-            if (sdr != null) sdr.Close();
-            conn.Close();
         }
 
         return ret;
@@ -161,24 +150,22 @@ public class ClsDB
     public DataSet ExecuteDataSet(string strQuery)
     {
         DataSet ds = new DataSet();
-        string strConn = this.strConn();
-        SqlConnection conn = new SqlConnection(strConn);
-        SqlCommand comm = new SqlCommand(strQuery, conn);
 
         try
         {
-            conn.Open();
-            SqlDataAdapter sda = new SqlDataAdapter();
-            sda.SelectCommand = comm;
-            sda.Fill(ds);
+            string strConn = this.strConn();
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                SqlCommand comm = new SqlCommand(strQuery, conn);
+                conn.Open();
+                SqlDataAdapter sda = new SqlDataAdapter();
+                sda.SelectCommand = comm;
+                sda.Fill(ds);
+            }
         }
         catch (Exception ex)
         {
             throw new Exception(ex.Message);
-        }
-        finally
-        {
-            conn.Close();
         }
 
         return ds;

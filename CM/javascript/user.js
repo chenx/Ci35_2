@@ -68,6 +68,11 @@ function validate() {
         o = f;
         f.addClass('error');
     }
+    else if (!isValidEmailAddress($.trim(f.val()))) {
+        msg = 'Email is not valid. \n' + msg;
+        o = f;
+        f.addClass('error');
+    }
     else {
         f.removeClass('error');
     }
@@ -117,8 +122,13 @@ function validate_edit() {
     }
 
     f = $('#txtEmail');
-    if ($.trim( f.val() ) == '') {
+    if ($.trim(f.val()) == '') {
         msg = 'Email cannot be empty. \n' + msg;
+        o = f;
+        f.addClass('error');
+    }
+    else if (!isValidEmailAddress($.trim(f.val()))) {
+        msg = 'Email is not valid. \n' + msg;
         o = f;
         f.addClass('error');
     }

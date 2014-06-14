@@ -4,6 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
+<script type="text/javascript" src="../javascript/util.js"></script>
 <script type="text/javascript" src="../javascript/user.js"></script>
 
 <center>

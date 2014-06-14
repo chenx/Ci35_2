@@ -23,6 +23,11 @@ function validate() {
         o = f;
         f.addClass('error');
     }
+    else if (!isValidEmailAddress($.trim(f.val()))) {
+        msg = 'Email is not valid. \n' + msg;
+        o = f;
+        f.addClass('error');
+    }
     else {
         f.removeClass('error');
     }
@@ -76,3 +81,4 @@ function delete_case(id, case_id) {
         }
     });
 }
+

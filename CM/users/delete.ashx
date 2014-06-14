@@ -27,16 +27,16 @@ public class Registry : IHttpHandler, System.Web.SessionState.IReadOnlySessionSt
         if (ID != "") { 
             string strQuery;
             if (action == "1") { // delete
-                strQuery = "DELETE FROM [User] WHERE ID = " + ID;
+                strQuery = "DELETE FROM [User] WHERE ID = " + ClsDB.sqlEncode(ID);
             } else if (action == "2") { // disable
                 strQuery = "UPDATE [User] SET disabled = '1', last_update_user_id = " +
                     ClsDB.sqlEncode(context.Session["userid"].ToString()) + ", last_update_datetime = " +
-                    ClsDB.sqlEncode(DateTime.Now.ToString()) + " WHERE ID = " + ID;
+                    ClsDB.sqlEncode(DateTime.Now.ToString()) + " WHERE ID = " + ClsDB.sqlEncode(ID);
             }
             else if (action == "3") { // enable
                 strQuery = "UPDATE [User] SET disabled = '0', last_update_user_id = " +
                     ClsDB.sqlEncode(context.Session["userid"].ToString()) + ", last_update_datetime = " +
-                    ClsDB.sqlEncode(DateTime.Now.ToString()) + " WHERE ID = " + ID;
+                    ClsDB.sqlEncode(DateTime.Now.ToString()) + " WHERE ID = " + ClsDB.sqlEncode(ID);
             }
             else {
                 writeResponse(context, "0");

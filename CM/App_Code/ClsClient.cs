@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
 using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
 
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
@@ -64,8 +58,8 @@ public class ClsClient
 
     public string strQuery() { return _strQuery; }
 
-	public ClsClient()
-	{
+    public ClsClient()
+    {
         this.clear();
     }
 
@@ -171,9 +165,26 @@ public class ClsClient
         }
     }
 
+    public string check_error() {
+        string s = "";
+
+        if (this.Case_Id == "") {
+            s += "Case Id cannot be empty.<br>";
+        }
+
+        if (this.Client_Type == "") {
+            s += "Client Type cannot be empty.<br>";
+        }
+
+        return s;
+    }
+
     public void update(string ID, string update_user_id)
     {
         if (ID == "") return;
+
+        string err = this.check_error();
+        if (err != "") throw new Exception(err);
 
         this._strQuery = "UPDATE Client SET " +
             "Case_ID = " + ClsDB.sqlEncode( this.Case_Id ) + ", " +
@@ -197,7 +208,7 @@ public class ClsClient
             "Date_For_Perspective_Client = " + ClsDB.sqlEncode( this.Date_For_Perspective_Client ) + ", " +
             "last_update_user_id = " + ClsDB.sqlEncode( update_user_id  ) + ", " +
             "last_update_datetime = " + ClsDB.sqlEncode(DateTime.Now.ToString()) +
-            " WHERE ID = " + ID;
+            " WHERE ID = " + ClsDB.sqlEncode(ID);
         ;
 
         new ClsDB().ExecuteNonQuery(this._strQuery);
@@ -206,6 +217,9 @@ public class ClsClient
 
     public void insert(string update_user_id)
     {
+        string err = this.check_error();
+        if (err != "") throw new Exception(err);
+
         this._strQuery = @"INSERT INTO Client (Case_Id, Client_Type, First_Name, Last_Name, Attorney, Paralegal,
 Date_Of_Injury, Statute_Of_Limitation, Phone_Number, Address, Date_Of_Birth, Social_Security_Number,
 Case_Type, At_Fault_Party, Settlement_Type, Settlement_Amount, Disposition, Case_Notes,
@@ -311,7 +325,7 @@ Date_For_Perspective_Client, [create_user_id], [create_datetime], [disabled]) VA
         myReportDocument.SetDataSource(ds.Tables[0]);
 
         myReportDocument.ExportToHttpResponse
-            (CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, HttpContext.Current.Response, true, "Client_Details_" + Case_ID);
+            (CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, HttpContext.Current.Response, true, "Case_" + Case_ID);
 
         //myReportDocument.ExportToHttpResponse
         //    (CrystalDecisions.Shared.ExportFormatType.ExcelRecord, Response, true, "Client_Details_" + Case_ID);
@@ -346,7 +360,7 @@ Date_For_Perspective_Client, [create_user_id], [create_datetime], [disabled]) VA
         myReportDocument.SetDataSource(ds.Tables[0]);
 
         myReportDocument.ExportToHttpResponse
-            (CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, HttpContext.Current.Response, true, "Client_Details_All");
+            (CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, HttpContext.Current.Response, true, "Case_All");
 
         //myReportDocument.ExportToHttpResponse
         //    (CrystalDecisions.Shared.ExportFormatType.ExcelRecord, Response, true, "Client_Details_" + Case_ID);
