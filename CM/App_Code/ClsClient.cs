@@ -89,51 +89,45 @@ public class ClsClient
     {
         this.clear();
 
-        ClsDB u = new ClsDB();
-        this._strQuery = "SELECT * FROM Client WHERE ID = " + ClsDB.sqlEncode(ID);
-
-        string strConn = u.strConn();
-        SqlConnection conn = null;
-
         try
         {
-            conn = new SqlConnection(strConn);
-            SqlCommand comm = new SqlCommand(this._strQuery, conn);
-
-            conn.Open();
-            using (SqlDataReader sdr = comm.ExecuteReader())
+            string strConn = new ClsDB().strConn(); 
+            using (SqlConnection conn = new SqlConnection(strConn))
             {
-                if (sdr.Read())
+                this._strQuery = "SELECT * FROM Client WHERE ID = " + ClsDB.sqlEncode(ID);
+                SqlCommand comm = new SqlCommand(this._strQuery, conn);
+
+                conn.Open();
+                using (SqlDataReader sdr = comm.ExecuteReader())
                 {
-                    this.Case_Id = sdr["Case_Id"].ToString();
-                    this.Client_Type = sdr["Client_Type"].ToString();
-                    this.First_Name = sdr["First_Name"].ToString();
-                    this.Last_Name = sdr["Last_Name"].ToString();
-                    this.Attorney = sdr["Attorney"].ToString();
-                    this.Paralegal = sdr["Paralegal"].ToString();
-                    this.Date_Of_Injury = ClsUtil.formatDate(sdr["Date_Of_Injury"].ToString());
-                    this.Statute_Of_Limitation = sdr["Statute_Of_Limitation"].ToString();
-                    this.Phone_Number = sdr["Phone_Number"].ToString();
-                    this.Address = sdr["Address"].ToString();
-                    this.Date_Of_Birth = ClsUtil.formatDate(sdr["Date_Of_Birth"].ToString());
-                    this.Social_Security_Number = sdr["Social_Security_Number"].ToString();
-                    this.Case_Type = sdr["Case_Type"].ToString();
-                    this.At_Fault_Party = sdr["At_Fault_Party"].ToString();
-                    this.Settlement_Type = sdr["Settlement_Type"].ToString();
-                    this.Settlement_Amount = sdr["Settlement_Amount"].ToString();
-                    this.Disposition = sdr["Disposition"].ToString();
-                    this.Case_Notes = sdr["Case_Notes"].ToString();
-                    this.Date_For_Perspective_Client = ClsUtil.formatDate(sdr["Date_For_Perspective_Client"].ToString());
+                    if (sdr.Read())
+                    {
+                        this.Case_Id = sdr["Case_Id"].ToString();
+                        this.Client_Type = sdr["Client_Type"].ToString();
+                        this.First_Name = sdr["First_Name"].ToString();
+                        this.Last_Name = sdr["Last_Name"].ToString();
+                        this.Attorney = sdr["Attorney"].ToString();
+                        this.Paralegal = sdr["Paralegal"].ToString();
+                        this.Date_Of_Injury = ClsUtil.formatDate(sdr["Date_Of_Injury"].ToString());
+                        this.Statute_Of_Limitation = sdr["Statute_Of_Limitation"].ToString();
+                        this.Phone_Number = sdr["Phone_Number"].ToString();
+                        this.Address = sdr["Address"].ToString();
+                        this.Date_Of_Birth = ClsUtil.formatDate(sdr["Date_Of_Birth"].ToString());
+                        this.Social_Security_Number = sdr["Social_Security_Number"].ToString();
+                        this.Case_Type = sdr["Case_Type"].ToString();
+                        this.At_Fault_Party = sdr["At_Fault_Party"].ToString();
+                        this.Settlement_Type = sdr["Settlement_Type"].ToString();
+                        this.Settlement_Amount = sdr["Settlement_Amount"].ToString();
+                        this.Disposition = sdr["Disposition"].ToString();
+                        this.Case_Notes = sdr["Case_Notes"].ToString();
+                        this.Date_For_Perspective_Client = ClsUtil.formatDate(sdr["Date_For_Perspective_Client"].ToString());
+                    }
                 }
             }
         }
         catch (Exception ex)
         {
             throw new Exception(ex.Message);
-        }
-        finally
-        {
-            if (conn != null) conn.Close();
         }
     }
 
