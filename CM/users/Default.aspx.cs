@@ -80,17 +80,17 @@ FROM [User] U LEFT OUTER JOIN UserGroup G ON U.gid = G.ID ORDER BY U.ID ASC";
 
     string addHdr() {
         string s = "";
-        s += "<td>View</td>";
-        s += "<td>Edit</td>";
-        s += "<td>Disable</td>";
-        s += "<td>Delete</td>";
-        s += "<td align='center'>&nbsp;ID&nbsp;</td>";
-        s += "<td align='center'>&nbsp;First Name&nbsp;</td>";
-        s += "<td align='center'>&nbsp;Last Name&nbsp;</td>";
-        s += "<td align='center'>&nbsp;Email&nbsp;</td>";
-        s += "<td align='center'>&nbsp;Login&nbsp;</td>";
-        s += "<td align='center'>&nbsp;User Type&nbsp;</td>";
-        s += "<td align='center'>&nbsp;Disabled&nbsp;</td>";
+        s += "<th>View</th>";
+        s += "<th>Edit</th>";
+        s += "<th>Disable</th>";
+        s += "<th>Delete</th>";
+        s += "<th align='center'>&nbsp;ID&nbsp;</th>";
+        s += "<th align='center'>&nbsp;First Name&nbsp;</th>";
+        s += "<th align='center'>&nbsp;Last Name&nbsp;</th>";
+        s += "<th align='center'>&nbsp;Email&nbsp;</th>";
+        s += "<th align='center'>&nbsp;Login&nbsp;</th>";
+        s += "<th align='center'>&nbsp;User Type&nbsp;</th>";
+        s += "<th align='center'>&nbsp;Disabled&nbsp;</th>";
         s = "<tr bgcolor='#99cc99'>" + s + "</tr>";
         return s;
     }
