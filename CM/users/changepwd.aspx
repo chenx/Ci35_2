@@ -19,11 +19,11 @@
 <asp:Label ID="lblProfile" runat="server"></asp:Label><br />
 
 
-<table>
-<tr><td>New Password:</td><td><input id="txtNewPwd" type="password" name="txtNewPwd" value=""></td></tr>
-<tr><td>New Password (repeat):</td><td><input id="txtNewPwd2" type="password" name="txtNewPwd2" value=""></td></tr>
-<tr><td colspan="2" align="center"><br /><input type="submit" runat="server" id="btnChangePwd" value="Change User Password" /></td></tr>
+<table class='T1'>
+<tr><td>New Password: <font color='red'>*</font></td><td><input id="txtNewPwd" type="password" name="txtNewPwd" value=""></td></tr>
+<tr><td>New Password (repeat): <font color='red'>*</font></td><td><input id="txtNewPwd2" type="password" name="txtNewPwd2" value=""></td></tr>
 </table>
+<br /><input type="submit" runat="server" id="btnChangePwd" value="Change User Password" />
 
 <table><tr><td align="center">
 <asp:Label ID="msg" ClientIDMode="Static" runat="server"></asp:Label>

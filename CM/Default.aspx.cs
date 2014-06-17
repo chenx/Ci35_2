@@ -13,6 +13,8 @@ public partial class Default : System.Web.UI.Page
             btnLogin.Visible = false;
         }
         else {
+            ((TextBox)btnLogin.FindControl("UserName")).Width = 150;
+            ((TextBox)btnLogin.FindControl("Password")).Width = 150; // Otherwise this is shorter in IE.
             //((TextBox)btnLogin.FindControl("UserName")).Focus();
             SetFocus(btnLogin.FindControl("UserName"));
         }

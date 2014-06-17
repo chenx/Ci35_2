@@ -29,14 +29,14 @@ public partial class profile_view : System.Web.UI.Page
     string ShowViewForm()
     {
         string s = "";
-        string star = "<font color='red'>*</font>";
+        //string star = "<font color='red'>*</font>";
 
-        s += "<tr><td>First Name:" + star + "</td><td width='150'>&nbsp;" + this.p.first_name + "</td></tr>";
+        s += "<tr><td>First Name:</td><td width='150'>&nbsp;" + this.p.first_name + "</td></tr>";
         s += "<tr><td>Last Name:</td><td>&nbsp;" + this.p.last_name + "</td></tr>";
         s += "<tr><td>Email:</td><td>&nbsp;" + this.p.email + "</td></tr>";
         s += "<tr><td>Login:</td><td>&nbsp;" + this.p.login + "</td></tr>";
         s += "<tr><td>Note:</td><td>&nbsp;" + this.p.note + "</td></tr>";
 
-        return "<table border='1' cellpadding='3' cellspacing='1'>" + s + "</table>";
+        return "<table class='T1'>" + s + "</table>";
     }
 }

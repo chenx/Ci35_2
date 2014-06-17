@@ -42,7 +42,7 @@ public class ClsAuth
     public static string addMenuUserName(string s) {
         if (ClsAuth.IsUser())
         {
-            s = "<table cellpadding='0' cellspacing='0' style='border: 0px; width: 100%; background-color: #6666cc;'>" +
+            s = "<table cellpadding='0' cellspacing='0' style='border: 0px; width: 100%; background-color: #6666ff;'>" +
                 "<tr><td>" + s + "</td>" +
                 "<td align='right' style='color: #dedeff; font-weight:bold;'> " + 
                 ClsUtil.CapitalizeFirstLetter( HttpContext.Current.Session["username"].ToString() ) + "&nbsp;&nbsp;</td></tr></table>";

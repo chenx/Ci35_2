@@ -60,7 +60,7 @@ public partial class profile_edit : System.Web.UI.Page
         s += "<tr><td>Login:</td><td>&nbsp;" + ClsUtil.textboxEncode(this.p.login) + " <input type='hidden' id='txtLogin' name='txtLogin' value='" + ClsUtil.textboxEncode(this.p.login) + "'></td></tr>";
         s += "<tr><td>Note:</td><td><input type='text' maxlength='100' id='txtNote' name='txtNote' value='" + ClsUtil.textboxEncode(this.p.note) + "'></td></tr>";
 
-        s = "<table border='1' cellpadding='3' cellspacing='1'>" + s + "</table>";
+        s = "<table class='T1'>" + s + "</table>";
 
         return "<table>" + s + "</table>" +
             "<br/><input value=\"Submit Change\" type=\"button\" onclick=\"javascript:update();\" />";

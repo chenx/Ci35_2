@@ -17,12 +17,12 @@
 </p>
 
 
-<table>
+<table class='T1'>
 <tr><td>Old Password: <font color='red'>*</font></td><td><input id="txtOldPwd" type="password" name="txtOldPwd" value=""></td></tr>
 <tr><td>New Password: <font color='red'>*</font></td><td><input id="txtNewPwd" type="password" name="txtNewPwd" value=""></td></tr>
 <tr><td>New Password (repeat): <font color='red'>*</font></td><td><input id="txtNewPwd2" type="password" name="txtNewPwd2" value=""></td></tr>
-<tr><td colspan="2" align="center"><br /><input type="submit" runat="server" id="btnChangePwd" value="Change My Password" /></td></tr>
 </table>
+<br /><input type="submit" runat="server" id="Submit1" value="Change My Password" />
 
 <table><tr><td align="center">
 <asp:Label ID="msg" ClientIDMode="Static" runat="server"></asp:Label>

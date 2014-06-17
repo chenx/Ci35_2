@@ -67,25 +67,25 @@ WHERE C.disabled = 0";
             {
                 for (int i = 0; i < dt.Rows.Count; ++i)
                 {
-                    string color = ((i % 2 == 0) ? " bgcolor='#eeeeee'" : "");
+                    string color = ((i % 2 == 0) ? " bgcolor='#ffffff'" : "");
                     s += addRow(dt.Rows[i], color);
                 }
             }
-            s = "<table border='1' cellpadding='2' cellspacing='2'>" + this.addHdr() + s + "</table>";
+            s = "<table class='T2'>" + this.addHdr() + s + "</table>";
         }
         ClientList.Text = s;
     }
 
     string addHdr() {
         string s = "";
-        s += "<td>View</td>";
-        s += "<td>Edit</td>";
-        s += "<td title='Download PDF'>Download</td>";
+        s += "<th>View</th>";
+        s += "<th>Edit</th>";
+        s += "<th title='Download PDF'>Download</th>";
         for (int i = 0, n = this.client.list_cols.Length; i < n; ++i)
         {
-            s += "<td align='center'>&nbsp;" + this.client.list_cols[i] + "&nbsp;</td>";
+            s += "<th align='center'>&nbsp;" + this.client.list_cols[i] + "&nbsp;</th>";
         }
-        s = "<tr bgcolor='#ccccee'>" + s + "</tr>";
+        s = "<tr bgcolor='#99cc99'>" + s + "</tr>";
         return s;
     }
 

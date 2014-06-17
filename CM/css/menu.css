@@ -6,7 +6,7 @@
     margin: 0;
     /*padding: 7px 6px 0;*/
         padding: 0px 0px 0px; /* top left bottom */
-    background: #6666cc /*#7d7d7d url(img/gradient.png) repeat-x 0*/ -110px;
+    background: #6666ff /*#6666cc #7d7d7d url(img/gradient.png) repeat-x 0*/ -110px;
     line-height: 100%;
         width: 100%;
 }

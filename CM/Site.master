@@ -8,16 +8,18 @@
     <title>Master Page</title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
+    <link href="css/layout.css" rel="stylesheet" type="text/css" />
     <link href="css/Site.css" rel="stylesheet" type="text/css" />
     <link href="css/menu.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>   
     
 </head>
 <body style="margin-top: 0px; margin-left: 0px; margin-right: 0px; margin-bottom: 0px;">
+<div class="wrapper">
 
     <form id="form1" runat="server">
 
-<table cellpadding='0' cellspacing='0' border="0" style="background-image:url('images/bg.jpg'); background-size:100%; width:100%;">
+<table cellpadding='0' cellspacing='0' border="0" style="background-image:url('images/bg.jpg'); height:60px; background-size:100%; width:100%;">
 <tr><td>
 <h1>&nbsp;</h1>
 </td></tr>
@@ -28,30 +30,34 @@
     <div>
         <asp:Panel ID="panel_header" runat="server" Width="100%" BackColor="White">
         </asp:Panel>
-        
+        <% if (! ClsAuth.IsUser()) { %> <center><br /><img src="images/cover.jpg" height="200" /></center> <% } %>
+        <br />
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
         
-        <p><br /></p>
+    </div>
+    </form>
+    
+<div class="push"></div>        
+</div><!--end of div wrapper-->
+
+<div class="footer">
         
+        <% if (!ClsAuth.IsUser()) { %>
         <asp:Panel ID="panel_footer" runat="server" Width="100%" BackColor="#eeeeee">
-            <!--[if IE]>
-            <div style="text-align: center; position:absolute; width:100%; height:50px;  bottom:0px; padding:0px; color:#999999; font-size:14px; background-color:white;">
-            <![endif]-->
-        
-            <!--[if ! IE]>--> 
-            <div style="text-align: center; position:fixed; width:100%; height:50px;  bottom:0px; padding:0px; color:#999999; font-size:14px; background-color:white;">
-            <hr style="color: #eeeeee; width:100%;" noshade size="1" />
+            <div style="text-align: center; position:fixed; width:100%; height:80px;  bottom:0px; padding:0px; color:#000000; font-size:14px; background-color:#eeeeee;">
+            <br />
             <a href="#">About Us</a> &nbsp;&nbsp;&nbsp;&nbsp;
             <a href="#">Terms of Service</a> &nbsp;&nbsp;&nbsp;&nbsp;
             <a href="#">Privacy</a> &nbsp;&nbsp;&nbsp;&nbsp;
             <a href="#">Security</a> 
-            &nbsp;&nbsp;&nbsp;&nbsp; 
+            <br /><br />
             Copyright &copy; 2014
-            <!--<![endif]-->
+            <br /><br />
             </div>
         </asp:Panel>
+        <% } %>
                 
-    </div>
-    </form>
+</div>
+    
 </body>
 </html>

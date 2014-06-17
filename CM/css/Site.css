@@ -57,3 +57,29 @@ legend {
   text-align:right;
 }
 
+table.T1 
+{
+    border: solid 1px #cccccc;
+    background-color: #eeffee;
+    padding: 1px;
+}
+
+table.T1 td
+{
+    border: solid 1px #cccccc;
+    padding: 3px;
+}
+
+table.T2
+{
+    border: solid 1px #cccccc;
+    border-width: 2px;
+    background-color: #eeffee;
+    padding: 1px;
+}
+
+table.T2 td 
+{
+	border: solid 1px #cccccc;
+    padding: 3px;
+}

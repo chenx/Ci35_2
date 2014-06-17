@@ -65,7 +65,7 @@ public partial class user_new : System.Web.UI.Page
         s += "<tr><td>User Type:" + star + "</td><td>" + ClsUser.writeUserTypeList("txtUserType", "txtUserType", this.user.gid) + "</td></tr>";
         s += "<tr><td>Disabled:</td><td>" + ClsUser.writeUserStatusList("txtDisabled", "txtDisabled", this.user.disabled) + "</td></tr>";
 
-        s = "<table border='1' cellpadding='3' cellspacing='1'>" + s + "</table>";
+        s = "<table class='T1'>" + s + "</table>";
 
         return "<table><tr><td valign='top'>" + s + "</td></table>" +
             "<br/><input value=\"Add New User\" type=\"button\" onclick=\"javascript:add();\" />";

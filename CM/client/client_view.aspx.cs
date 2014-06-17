@@ -51,7 +51,7 @@ public partial class client_view : System.Web.UI.Page
             s += "<tr><td>Social Security Number:</td><td>" + this.client.Social_Security_Number + "&nbsp;</td></tr>";
         }
 
-        s = "<table border='1' cellpadding='3' cellspacing='1'>" + s + "</table>";
+        s = "<table class='T1'>" + s + "</table>";
 
         string t = "";
 
@@ -74,7 +74,7 @@ public partial class client_view : System.Web.UI.Page
             t += "<tr><td>Date For Perspective Client:</td><td>" + this.client.Date_For_Perspective_Client + "&nbsp;</td></tr>";
         }
 
-        t = "<table border='1' cellpadding='3' cellspacing='1'>" + t + "</table>";
+        t = "<table class='T1'>" + t + "</table>";
 
         return "<table><tr><td valign='top'>" + s + 
             "</td><td width='50'><br></td><td valign='top'>" + t + "</td></tr></table>";

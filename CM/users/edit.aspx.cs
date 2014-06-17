@@ -73,7 +73,7 @@ public partial class user_edit : System.Web.UI.Page
         s += "<tr><td>Last Updated Datetime:</td><td>&nbsp;" + ClsUtil.textboxEncode(this.user.last_update_datetime) + "</td></tr>";
         s += "<tr><td>Disabled:</td><td>&nbsp;" + ClsUser.writeUserStatusList("txtDisabled", "txtDisabled", this.user.disabled) + "</td></tr>";
 
-        s = "<table border='1' cellpadding='3' cellspacing='1'>" + s + "</table>";
+        s = "<table class='T1'>" + s + "</table>";
 
         return "<table>" + s + "</table>" +
             "<br/><input value=\"Submit Change\" type=\"button\" onclick=\"javascript:update();\" />";

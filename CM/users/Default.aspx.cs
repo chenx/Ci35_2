@@ -35,11 +35,11 @@ FROM [User] U LEFT OUTER JOIN UserGroup G ON U.gid = G.ID ORDER BY U.ID ASC";
             {
                 for (int i = 0; i < dt.Rows.Count; ++i)
                 {
-                    string color = ((i % 2 == 0) ? " bgcolor='#eeeeee'" : "");
+                    string color = ((i % 2 == 0) ? " bgcolor='#ffffff'" : "");
                     s += addRow(dt.Rows[i], color);
                 }
             }
-            s = "<table border='1' cellpadding='2' cellspacing='2'>" + this.addHdr() + s + "</table>";
+            s = "<table class='T1'>" + this.addHdr() + s + "</table>";
         }
         ClientList.Text = s;
 
@@ -91,7 +91,7 @@ FROM [User] U LEFT OUTER JOIN UserGroup G ON U.gid = G.ID ORDER BY U.ID ASC";
         s += "<td align='center'>&nbsp;Login&nbsp;</td>";
         s += "<td align='center'>&nbsp;User Type&nbsp;</td>";
         s += "<td align='center'>&nbsp;Disabled&nbsp;</td>";
-        s = "<tr bgcolor='#ccccee'>" + s + "</tr>";
+        s = "<tr bgcolor='#99cc99'>" + s + "</tr>";
         return s;
     }
 

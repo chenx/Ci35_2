@@ -59,8 +59,8 @@ public partial class client_new : System.Web.UI.Page
         s += "<tr><td>Address:</td><td><input type='text' maxlength='100' id='txtAddress' name='txtAddress' value='" + this.client.Address + "'></td></tr>";
         s += "<tr><td>Date Of Birth:</td><td><input type='text' class='datetime' maxlength='10' id='txtDOB' name='txtDOB' value='" + this.client.Date_Of_Birth + "'></td></tr>";
         s += "<tr><td>Social Security Number:</td><td><input type='text' maxlength='11' id='txtSSN' name='txtSSN' value='" + this.client.Social_Security_Number + "'></td></tr>";
-        
-        s = "<table border='1' cellpadding='3' cellspacing='1'>" + s + "</table>";
+
+        s = "<table class='T1'>" + s + "</table>";
 
         string t = "";
 
@@ -75,7 +75,7 @@ public partial class client_new : System.Web.UI.Page
         t += "<tr><td>Case Notes:</td><td><textarea rows='10' cols='30' id='txtCaseNotes' name='txtCaseNotes'>" + this.client.Case_Notes + "</textarea></td></tr>";
         t += "<tr><td>Date For Perspective Client:</td><td><input type='text' class='datetime' maxlength='10' id='txtDateForPersClient' name='txtDateForPersClient' value='" + this.client.Date_For_Perspective_Client + "'></td></tr>";
 
-        t = "<table border='1' cellpadding='3' cellspacing='1'>" + t + "</table>";
+        t = "<table class='T1'>" + t + "</table>";
 
         return "<table><tr><td valign='top'>" + s + 
             "</td><td width='50'><br></td><td valign='top'>" + t + "</td></tr></table>" +
