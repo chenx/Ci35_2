@@ -3,7 +3,7 @@ using System.Data;
 using System.Web;
 
 /// <summary>
-/// Summary description for ClsUser
+/// Functions for a user.
 /// </summary>
 public class ClsUser
 {
@@ -218,8 +218,7 @@ public class ClsUser
         string s = "SELECT name FROM UserType WHERE ID = " + ClsDB.sqlEncode(type_id);
         return new ClsDB().ExecuteScalar(s);
     }
-
-
+    
     public static string writeUserStatusList(string id, string name, string value) {
         string s = "<option value=''>-- Selecte One --</option>";
 
@@ -241,5 +240,9 @@ public class ClsUser
         string s = "SELECT login FROM [User] WHERE ID = " + ClsDB.sqlEncode(ID);
         return new ClsDB().ExecuteScalar(s);
     }
-
+    
+    public static string getUserRole(string roleID)
+    {
+        return new ClsDB().ExecuteScalar("SELECT [name] FROM UserGroup WHERE ID = " + ClsDB.sqlEncode(roleID));
+    }
 }

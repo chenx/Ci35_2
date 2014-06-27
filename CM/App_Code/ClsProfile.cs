@@ -3,7 +3,7 @@ using System.Data;
 using System.Web;
 
 /// <summary>
-/// Summary description for ClsUser
+/// Functions for user profile.
 /// </summary>
 public class ClsProfile
 {

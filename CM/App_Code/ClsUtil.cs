@@ -5,7 +5,7 @@ using System.Web.Security;
 
 
 /// <summary>
-/// Summary description for ClsUtil
+/// General utility functions.
 /// </summary>
 public class ClsUtil
 {

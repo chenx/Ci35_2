@@ -7,7 +7,7 @@ using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 
 /// <summary>
-/// Summary description for ClsClient
+/// Functions for a client.
 /// </summary>
 public class ClsClient
 {
@@ -102,24 +102,24 @@ public class ClsClient
                 {
                     if (sdr.Read())
                     {
-                        this.Case_Id = sdr["Case_Id"].ToString();
-                        this.Client_Type = sdr["Client_Type"].ToString();
-                        this.First_Name = sdr["First_Name"].ToString();
-                        this.Last_Name = sdr["Last_Name"].ToString();
-                        this.Attorney = sdr["Attorney"].ToString();
-                        this.Paralegal = sdr["Paralegal"].ToString();
+                        this.Case_Id = ClsUtil.getStrVal(sdr["Case_Id"]);
+                        this.Client_Type = ClsUtil.getStrVal(sdr["Client_Type"]);
+                        this.First_Name = ClsUtil.getStrVal(sdr["First_Name"]);
+                        this.Last_Name = ClsUtil.getStrVal(sdr["Last_Name"]);
+                        this.Attorney = ClsUtil.getStrVal(sdr["Attorney"]);
+                        this.Paralegal = ClsUtil.getStrVal(sdr["Paralegal"]);
                         this.Date_Of_Injury = ClsUtil.formatDate(sdr["Date_Of_Injury"].ToString());
-                        this.Statute_Of_Limitation = sdr["Statute_Of_Limitation"].ToString();
-                        this.Phone_Number = sdr["Phone_Number"].ToString();
-                        this.Address = sdr["Address"].ToString();
+                        this.Statute_Of_Limitation = ClsUtil.getStrVal(sdr["Statute_Of_Limitation"]);
+                        this.Phone_Number = ClsUtil.getStrVal(sdr["Phone_Number"]);
+                        this.Address = ClsUtil.getStrVal(sdr["Address"]);
                         this.Date_Of_Birth = ClsUtil.formatDate(sdr["Date_Of_Birth"].ToString());
-                        this.Social_Security_Number = sdr["Social_Security_Number"].ToString();
-                        this.Case_Type = sdr["Case_Type"].ToString();
-                        this.At_Fault_Party = sdr["At_Fault_Party"].ToString();
-                        this.Settlement_Type = sdr["Settlement_Type"].ToString();
-                        this.Settlement_Amount = sdr["Settlement_Amount"].ToString();
-                        this.Disposition = sdr["Disposition"].ToString();
-                        this.Case_Notes = sdr["Case_Notes"].ToString();
+                        this.Social_Security_Number = ClsUtil.getStrVal(sdr["Social_Security_Number"]);
+                        this.Case_Type = ClsUtil.getStrVal(sdr["Case_Type"]);
+                        this.At_Fault_Party = ClsUtil.getStrVal(sdr["At_Fault_Party"]);
+                        this.Settlement_Type = ClsUtil.getStrVal(sdr["Settlement_Type"]);
+                        this.Settlement_Amount = ClsUtil.getStrVal(sdr["Settlement_Amount"]);
+                        this.Disposition = ClsUtil.getStrVal(sdr["Disposition"]);
+                        this.Case_Notes = ClsUtil.getStrVal(sdr["Case_Notes"]);
                         this.Date_For_Perspective_Client = ClsUtil.formatDate(sdr["Date_For_Perspective_Client"].ToString());
                     }
                 }

@@ -11,7 +11,7 @@
     <div>
     <asp:Login ID="btnLogin" runat="server" CssClass="LoginControl" BackColor="#ccffcc" BorderColor="#CCCC99" 
             BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="10pt" 
-            onauthenticate="btnLogin_Authenticate">
+            onauthenticate="btnLogin_Authenticate" UserNameLabelText="Username:" >
     <TitleTextStyle BackColor="#ccffcc" Font-Bold="True" ForeColor="#ccffcc" />
     </asp:Login>
      <asp:Label ID="Label1" runat="server"></asp:Label>

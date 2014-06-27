@@ -54,17 +54,12 @@ public partial class Default : System.Web.UI.Page
             using (SqlConnection conn = new SqlConnection(strConn))
             {
                 string strQuery = "SELECT ID, login, gid, email FROM [User] WHERE login = @login AND passwd=HASHBYTES('MD5', @pwd) AND disabled = '0'";
+
                 SqlCommand comm = new SqlCommand(strQuery, conn);
+                comm.Parameters.Add("@login", SqlDbType.VarChar, 50).Value = UserName;
+                comm.Parameters.Add("@pwd", SqlDbType.VarChar, 50).Value = Password;
 
-                SqlParameter param1 = new SqlParameter("@login", SqlDbType.VarChar);
-                param1.Value = UserName;
-                comm.Parameters.Add(param1);
-
-                SqlParameter param2 = new SqlParameter("@pwd", SqlDbType.VarChar);
-                param2.Value = Password;                
-                comm.Parameters.Add(param2);
-
-                //if (ClsUtil.DEBUG()) { Response.Write("query: " + strQuery); }
+                if (ClsDB.DEBUG()) { Response.Write("query: " + strQuery); }
                 conn.Open();
                 using (SqlDataReader sdr = comm.ExecuteReader())
                 {
@@ -99,17 +94,17 @@ public partial class Default : System.Web.UI.Page
                 string strQuery = "SELECT ID, login, gid, email FROM [User] WHERE login=" + ClsDB.sqlEncode(UserName) +
                     " AND passwd=HASHBYTES('MD5', " + ClsDB.sqlEncode(Password) + ") AND disabled = '0'";
                 SqlCommand comm = new SqlCommand(strQuery, conn);
-                //if (ClsUtil.DEBUG()) { Response.Write("query: " + strQuery); }
+                if (ClsDB.DEBUG()) { Response.Write("query: " + strQuery); }
 
                 conn.Open();
                 using (SqlDataReader sdr = comm.ExecuteReader())
                 {
                     if (sdr.Read())
                     {
-                        Session["userid"] = sdr["ID"].ToString();
-                        Session["username"] = sdr["login"].ToString();
-                        Session["role"] = getUserRole(sdr["gid"].ToString());
-                        Session["email"] = sdr["email"].ToString();
+                        Session["userid"] = ClsUtil.getStrVal(sdr["ID"]);
+                        Session["username"] = ClsUtil.getStrVal(sdr["login"]);
+                        Session["role"] = getUserRole( ClsUtil.getStrVal(sdr["gid"]) );
+                        Session["email"] = ClsUtil.getStrVal(sdr["email"]);
                         ok = true;
                     }
                 }
@@ -125,6 +120,6 @@ public partial class Default : System.Web.UI.Page
     
     private string getUserRole(string roleID)
     {
-        return new ClsDB().ExecuteScalar("SELECT [name] FROM UserGroup WHERE ID = '" + roleID + "'");
+        return new ClsDB().ExecuteScalar("SELECT [name] FROM UserGroup WHERE ID = " + ClsDB.sqlEncode(roleID) );
     }
 }

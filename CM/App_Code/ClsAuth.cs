@@ -2,7 +2,7 @@
 
 
 /// <summary>
-/// Summary description for ClsAuth
+/// User authentication functions.
 /// </summary>
 public class ClsAuth
 {
