@@ -11,4 +11,4 @@ Include:
 - Personal profile management: view/edit/change password
 - Customized client management: new/view/edit/disable/enable/delete
 - Crystal report generation and download
-- provide a web service for authentication and providing client information.
+- Provide a web service for authentication and providing client information.
