@@ -5,6 +5,9 @@ using System.Configuration;
 
 /// <summary>
 /// Database functions.
+/// 
+/// @author: X. Chen
+/// @since:  May 27, 2014.
 /// </summary>
 public class ClsDB
 {
