@@ -12,7 +12,7 @@ public class ClsDB
     private string _strConn;
 
     /// <summary>
-    /// Use default connection string in web.config
+    /// Use default connection string in web.config.
     /// </summary>
     public ClsDB()
     {
@@ -23,7 +23,7 @@ public class ClsDB
     /// <summary>
     /// Use customized connection string.
     /// </summary>
-    /// <param name="connName"></param>
+    /// <param name="connName">Database connnection string.</param>
     public ClsDB(string connName)
     {
         _strConn = ConfigurationManager.ConnectionStrings[connName].ConnectionString;
@@ -42,8 +42,8 @@ public class ClsDB
     /// <summary>
     /// Assumption: query is to get count.
     /// </summary>
-    /// <param name="strQuery"></param>
-    /// <returns></returns>
+    /// <param name="strQuery">A database query.</param>
+    /// <returns>Number of rows in the result set.</returns>
     public int getCount(string strQuery)
     {
         string s = ExecuteScalar(strQuery);
@@ -53,7 +53,7 @@ public class ClsDB
     /// <summary>
     /// Used for Update, Delete and Insert queries that do not return any value.
     /// </summary>
-    /// <param name="strQuery"></param>
+    /// <param name="strQuery">A database query.</param>
     public void ExecuteNonQuery(string strQuery) 
     {
         try
@@ -75,8 +75,8 @@ public class ClsDB
     /// <summary>
     /// Return a scalar value from the query, which is the first variable in result set.
     /// </summary>
-    /// <param name="strQuery"></param>
-    /// <returns></returns>
+    /// <param name="strQuery">A database query.</param>
+    /// <returns>Query result string.</returns>
     public string ExecuteScalar(string strQuery)
     {
         string ret = "";
@@ -105,6 +105,10 @@ public class ClsDB
         return ret;
     }
 
+    /// <summary>
+    /// This method is not implemented.
+    /// </summary>
+    /// <param name="strQuery">A database query.</param>
     public void ExecuteReader(string strQuery) { 
     
     }
@@ -112,8 +116,8 @@ public class ClsDB
     /// <summary>
     /// The field is of type varbinary, e.g., for password field.
     /// </summary>
-    /// <param name="strQuery"></param>
-    /// <returns></returns>
+    /// <param name="strQuery">A database query.</param>
+    /// <returns>Query result: a byte[] array.</returns>
     public byte[] ExecuteVarbinary(string strQuery)
     {
         byte[] ret = null;
@@ -145,8 +149,8 @@ public class ClsDB
     /// <summary>
     /// Return a dataset from the query.
     /// </summary>
-    /// <param name="strQuery"></param>
-    /// <returns></returns>
+    /// <param name="strQuery">A database query.</param>
+    /// <returns>Query result: a DataSet object.</returns>
     public DataSet ExecuteDataSet(string strQuery)
     {
         DataSet ds = new DataSet();
@@ -171,6 +175,11 @@ public class ClsDB
         return ds;
     }
 
+    /// <summary>
+    /// Return a datatable from the query.
+    /// </summary>
+    /// <param name="strQuery">A database query.</param>
+    /// <returns>Query result: a DataTable object.</returns>
     public DataTable ExecuteDataTable(string strQuery)
     {
         DataSet ds = ExecuteDataSet(strQuery);
@@ -181,8 +190,8 @@ public class ClsDB
     /// <summary>
     /// Encode a variable string to be used in a query.
     /// </summary>
-    /// <param name="s"></param>
-    /// <returns></returns>
+    /// <param name="s">A parameter string.</param>
+    /// <returns>Encoded parameter string, which is safe to be used in a database query.</returns>
     public static string sqlEncode(string s)
     {
         if (s == null || s == "") return "''";
