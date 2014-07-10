@@ -30,11 +30,19 @@ public class ClsDB
         _DEBUG = ClsUtil.StrToBool(ConfigurationSettings.AppSettings["DEBUG_DB"]);
     }
 
+    /// <summary>
+    /// Return the query string.
+    /// </summary>
+    /// <returns>The query string.</returns>
     public string strConn()
     {
         return _strConn;
     }
 
+    /// <summary>
+    /// Return whether the DEBUG mode is on/off.
+    /// </summary>
+    /// <returns>The DEBUG mode value.</returns>
     public static bool DEBUG() {
         return _DEBUG;
     }
