@@ -13,6 +13,8 @@ Include:
 - Crystal report generation and download for client information.
 - Provide a web service for user authentication and providing client information.
 
-Author:  X. Chen,
-Since:   2014,
+
+--------------
+Author:  X. Chen  
+Since:   2014  
 License: Apache/MIT/BSD/GPL
