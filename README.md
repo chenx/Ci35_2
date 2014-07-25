@@ -1,7 +1,7 @@
 Ci35_1
 ======
 
-ASP.NET 3.5 Website Framework 1. A new website can start with this and save time.
+ASP.NET Website Framework 1. A new website can start with this and save time.
 
 Development environment: windows server 2008 R2, VS.NET 2008, MSSQL 2008.
 
